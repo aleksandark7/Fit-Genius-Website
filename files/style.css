@@ -1,0 +1,294 @@
+html{
+  font-size: 62.5%;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: "Inter", sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #fff;
+}
+
+/*************************************/
+/* GENERAL REUSABLE COMPONENTS */
+/*************************************/
+
+.grid{
+  display: grid;
+  gap: 9.6rem;  
+}
+
+.container{
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 3.2rem;
+}
+
+.grid-2-cols{
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3-cols{
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-5-cols{
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.heading-primary{
+  font-size: 4.8rem;
+  line-height: 1.05;
+  font-weight: 700;
+  color:#fff;
+  margin-bottom: 3.2rem;
+  letter-spacing: -0.5px;
+}
+
+  .btn:link,
+  .btn:visited{
+    display: inline-block;    
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1.6rem 3.2rem;
+    border-radius: 11px;
+    transition: all 0.3s;
+  }
+
+  .btn-full:link,
+  .btn-full:visited{
+    background-color: #ff0000 ;
+    color: #fff;
+  }
+
+  .btn-full:hover,
+  .btn-full:active{
+    background-color: #990000;
+    color: #fff;
+  }
+
+  .btn-outline:link,
+  .btn-outline:visited{
+    background-color: #fff;
+    color: #555;
+  }
+
+  .btn-outline:hover,
+  .btn-outline:active{
+    background-color: #D3D3D3;
+    color: #555;
+    box-shadow: inset 0 0 0 3px #fff;
+  }
+
+  .margin-right-small{
+    margin-right: 1.6rem !important;
+  }
+
+
+/*************************************/
+/* HEADER */
+/*************************************/
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000000;
+  height: 9.6rem;
+  padding: 0 3.2rem;
+  border-bottom: 1px solid #fff;
+
+}
+
+.logo{
+  padding-top: 1rem;
+  height: 24rem;
+}
+
+/*************************************/
+/* NAVIGATION*/
+/*************************************/
+
+.main-nav-list{
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 3.2rem;
+}
+
+.main-nav-link:link,
+.main-nav-link:visited{
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.8rem;
+  transition: all 0.3s;
+}
+
+.main-nav-link:hover,
+.main-nav-link:active{
+  color: #ff3333;
+}
+
+.main-nav-link.nav-cta:link,
+.main-nav-link.nav-cta:visited{
+  padding: 1.2rem 2.4rem;
+  border-radius: 11px;
+  color: #fff;
+  background-color: #ff0000  ;
+}
+
+.main-nav-link.nav-cta:hover,
+.main-nav-link.nav-cta:active{
+  background-color: #990000;
+}
+
+/*************************************/
+/* HERO SECTION */
+/*************************************/
+
+.section-hero{
+  background-image: url('../pictures/hero.jpg');
+  background-size: cover;
+  background-position: left;
+  background-repeat: no-repeat;
+  padding-top: 4.8rem;
+  min-height: 100vh;
+}
+
+.hero{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 130rem;
+  margin: 0 auto;
+  padding: 6.2rem 2.2rem 0 3.2rem;
+  gap: 9.6rem;
+  }
+
+  .hero-textbox{
+    margin-top: 1.8rem;
+  }
+
+  .hero-description{
+    font-size: 2rem;
+    line-height: 1.5;
+    margin-bottom: 4.8rem;
+  }
+
+.hero-img{
+  position: relative;
+  width: 70%;
+  border-radius: 10px 10px 0 10px;
+}
+
+
+/*************************************/
+/* FOOTER */
+/*************************************/
+
+.footer{
+  padding: 5rem 0 6.4rem; 
+  color: #494949;
+  border-top: 2px solid #ff0000;
+  position: relative;
+}
+
+.grid-footer{
+  grid-template-columns: 1.5fr 1.5fr 1fr 1fr;
+}
+
+.logo-col{
+  display: flex;
+  flex-direction: column;
+}
+
+.social-links{
+  margin-top: 8rem;
+  list-style-type: none;
+  display: flex;
+  gap: 2.4rem;
+}
+
+.social-icon{
+  height: 2.4rem;
+  width: 2.4rem;
+  color: #990000;
+}
+
+.social-icon:link,
+.social-icon:visited{
+  transition: all 0.3s;
+}
+
+.social-icon:hover,
+.social-icon:active{
+  color: #ff0000;
+} 
+
+.copyright{
+  font-size: 1.3rem;
+  line-height: 1.6rem;
+  margin-top: auto;
+}
+
+.footer-logo{
+  display: block;
+  margin-bottom: 3.2rem;
+  position: absolute;
+  width: 20rem;
+  top: -22px;
+  left: 102px;
+}
+
+.footer-heading{
+  color: #444;
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 3.5rem;
+}
+
+.contacts{
+  font-style: normal;
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+.address-col{
+  display: flex;
+  flex-direction: column;
+}
+
+.address{
+  margin-bottom: 2.4rem;
+}
+
+.footer-nav{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.footer-link:link,
+.footer-link:visited{
+ text-decoration: none;
+ font-size: 1.6rem;
+ color: #565656;
+ transition: all 0.3s;
+}
+
+.footer-link:hover,
+.footer-link:active{
+  color: #222;
+}
+
+
+
+

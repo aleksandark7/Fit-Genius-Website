@@ -1,0 +1,304 @@
+html{
+  font-size: 62.5%;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: "Inter", sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #fff;
+  background-color: #000000;
+}
+
+/*************************************/
+/* GENERAL REUSABLE COMPONENTS */
+/*************************************/
+
+.grid{
+  display: grid;
+  gap: 9.6rem;  
+}
+
+.container{
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 3.2rem;
+}
+
+.grid-2-cols{
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3-cols{
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000000;
+  height: 9.6rem;
+  padding: 0 3.2rem;
+  border-bottom: 1px solid #fff;
+
+}
+
+.logo{
+  padding-top: 1rem;
+  height: 24rem;
+}
+
+/*************************************/
+/* NAVIGATION*/
+/*************************************/
+
+.main-nav-list{
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 3.2rem;
+}
+
+.main-nav-link:link,
+.main-nav-link:visited{
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.8rem;
+  transition: all 0.3s;
+}
+
+.main-nav-link:hover,
+.main-nav-link:active{
+  color: #ff3333;
+}
+
+.main-nav-link.nav-cta:link,
+.main-nav-link.nav-cta:visited{
+  padding: 1.2rem 2.4rem;
+  border-radius: 11px;
+  color: #fff;
+  background-color: #ff0000  ;
+}
+
+.main-nav-link.nav-cta:hover,
+.main-nav-link.nav-cta:active{
+  background-color: #990000;
+}
+
+/*************************************/
+/* MAIN */
+/*************************************/
+
+.main-section{
+  text-align: center;
+  height: 100vh;
+}
+
+.heading-primary{
+  margin-top: 2rem;
+  font-weight: 600;
+  font-size: 3.6rem;
+  letter-spacing: -0.5px;
+}
+
+.subheading{
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ff0000;
+  text-transform: uppercase;
+  margin-top: 1.4rem;
+}
+
+.card-image{
+  width: 90%;
+  overflow: hidden;
+}
+
+.exercises-flexbox{
+  display: flex;
+  margin-top: 4rem;
+  gap: 2rem;
+}
+
+.card-heading{
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-top: 2rem;
+  color: #000000;
+  letter-spacing: 0.2rem;
+  font-weight: bold;
+}
+
+.list-item{
+  color: #ff0000;
+  font-weight: 600;
+}
+
+.card {
+  width: 38rem;
+  height: 25rem;
+  background-image: linear-gradient(163deg, #ff0000 0%, #310404 100%);
+  border-radius: 20px;
+  transition: all .3s;
+  perspective: 1000px;
+}
+
+.card2 {
+  width: 100%;
+  height: 100%;
+  background-color: #d4d4d4;
+  border-radius: 20px;
+  transform-style: preserve-3d;
+  transition: all .8s;
+}
+
+.front, .back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden; 
+}
+
+.front {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: rotateY(0deg);
+}
+
+.back {
+  transform: rotateY(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card:hover .card2 {
+  transform: rotateY(180deg);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  color: #fff;
+}
+
+li {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+
+/*************************************/
+/* FOOTER */
+/*************************************/
+
+.footer{
+  padding: 5rem 0 6.4rem; 
+  color: #494949;
+  border-top: 2px solid #ff0000;
+  background-color: #f2f2f2;
+  position: relative;
+}
+
+.grid-footer{
+  grid-template-columns: 1.5fr 1.5fr 1fr 1fr;
+}
+
+.logo-col{
+  display: flex;
+  flex-direction: column;
+}
+
+.social-links{
+  margin-top: 8rem;
+  list-style-type: none;
+  display: flex;
+  gap: 2.4rem;
+}
+
+.social-icon{
+  height: 2.4rem;
+  width: 2.4rem;
+  color: #990000;
+}
+
+.social-icon:link,
+.social-icon:visited{
+  transition: all 0.3s;
+}
+
+.social-icon:hover,
+.social-icon:active{
+  color: #ff0000;
+} 
+
+.copyright{
+  font-size: 1.3rem;
+  line-height: 1.6rem;
+  margin-top: auto;
+}
+
+.footer-logo{
+  display: block;
+  margin-bottom: 3.2rem;
+  position: absolute;
+  width: 20rem;
+  top: -22px;
+  left: 102px;
+}
+
+.footer-heading{
+  color: #444;
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 3.5rem;
+}
+
+.contacts{
+  font-style: normal;
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+.address-col{
+  display: flex;
+  flex-direction: column;
+}
+
+.address{
+  margin-bottom: 2.4rem;
+}
+
+.footer-nav{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.footer-link:link,
+.footer-link:visited{
+ text-decoration: none;
+ font-size: 1.6rem;
+ color: #565656;
+ transition: all 0.3s;
+}
+
+.footer-link:hover,
+.footer-link:active{
+  color: #222;
+}

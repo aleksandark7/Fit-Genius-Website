@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="dashboard.css">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <title>Dashboard</title>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="index.html">
+      <img class="logo" src="logo.svg" alt="FitGenius logo">
+    </a>
+    <nav class="main-nav">
+      <ul class="main-nav-list">
+        <li><a class="main-nav-link" href="#">Exercises</a></li>
+        <li><a class="main-nav-link" href="systems.html">Training systems</a></li>
+        <li><a class="main-nav-link" href="index.html">Home</a></li>
+        <li><a href="login.html" target="_blank" onclick="logout()" class="btn btn-full">Logout</a></li> 
+      </ul>
+  </nav>
+</header>
+
+<!-- Main content -->
+<section class="main-dashboard">
+  <div class="account-section">
+    
+    <div class="img-textbox">
+      <img class="img-user" src="../pictures/user.png" alt="User Image">
+    </div>
+    <div class="prikaz-ime"></div>
+    <div class="basic-info">
+      <div id="height"></div>
+      <div id="weight"></div>
+      <div id="level"></div>
+      <div id="date"></div>
+    </div>
+  
+  </div>
+  <div class="training-section">
+
+    <div class="week-section">
+      <h2 class="week-heading">WEEK 1</h2>
+      <div class="training-week">
+
+        <!-- Day 0 -->
+        
+        <div id="day-0" class="training-day">
+          <span class="day-heading">Monday</span>
+          <ion-icon class="social-icon barbell-icon" name="barbell-outline" style="display: none;"></ion-icon>
+          <ion-icon class="social-icon check-icon" name="checkbox" style="display: none;"></ion-icon>
+        </div>
+
+        <!-- Day 1 -->
+        
+        <div id="day-1" class="training-day">
+          <span class="day-heading">Tuesday</span>
+          <a href="#"><ion-icon class="social-icon barbell-icon" name="barbell-outline" style="display: none;"></ion-icon></a>
+          <ion-icon class="social-icon check-icon" name="checkbox" style="display: none;"></ion-icon>
+        </div>
+
+        <!-- Day 2 -->
+        <div id="day-2" class="training-day">
+          <span class="day-heading">Wednesday</span>
+          <ion-icon class="social-icon barbell-icon" name="barbell-outline" style="display: none;"></ion-icon>
+          <ion-icon class="social-icon check-icon" name="checkbox" style="display: none;"></ion-icon>
+        </div>
+
+        <!-- Day 3 -->
+        <div id="day-3" class="training-day">
+          <span class="day-heading">Thursday</span>
+          <ion-icon class="social-icon barbell-icon" name="barbell-outline" style="display: none;"></ion-icon>
+          <ion-icon class="social-icon check-icon" name="checkbox" style="display: none;"></ion-icon>
+        </div>
+
+        <!-- Day 4 -->
+        <div id="day-4" class="training-day">
+          <span class="day-heading">Friday</span>
+          <ion-icon class="social-icon barbell-icon" name="barbell-outline" style="display: none;"></ion-icon>
+          <ion-icon class="social-icon check-icon" name="checkbox" style="display: none;"></ion-icon>
+        </div>
+
+        <!-- Day 5 -->
+        <div id="day-5" class="training-day">
+          <span class="day-heading">Saturday</span>
+          <ion-icon class="social-icon barbell-icon" name="barbell-outline" style="display: none;"></ion-icon>
+          <ion-icon class="social-icon check-icon" name="checkbox" style="display: none;"></ion-icon>
+        </div>
+
+        <!-- Day 6 -->
+        <div id="day-6" class="training-day">
+          <span class="day-heading">Sunday</span>
+          <ion-icon class="social-icon barbell-icon" name="barbell-outline" style="display: none;"></ion-icon>
+          <ion-icon class="social-icon check-icon" name="checkbox" style="display: none;"></ion-icon>  
+        </div>
+      </div>
+    </div>
+
+    <div class="plan-section">
+      <h2 class="plan-heading">CURRENT PLAN:</h2>
+      <div id="planDisplay"></div>
+      
+    </div>
+    <a href="#" id="generatePlan">Change plan</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container grid grid-footer">
+    <div class="logo-col">
+      <a href="#">
+      <img class="footer-logo" src="footerLogo.svg" alt="Fit Genius logo"></a>
+      <ul class="social-links">
+        <li><a class="footer-link" href="#" class="social-logo"><ion-icon class="social-icon" name="logo-instagram"></ion-icon></a></li>
+        <li><a class="footer-link" href="#" class="social-logo"><ion-icon class="social-icon" name="logo-facebook"></ion-icon></a></li>
+        <li><a class="footer-link" href="#" class="social-logo"><ion-icon class="social-icon" name="logo-twitter"></ion-icon></a></li>
+      </ul>
+
+      <p class="copyright">Copyright &copy; 2023 by Fit Genius</p>
+    </div>
+    <div class="address-col">
+      <p class="footer-heading">Contact us</p>
+      <address class="contacts">
+        <p class="address">123 Main Street, 3rd floor,<br> Boston, MA 94125</p>
+        <p>
+          <a class="footer-link" href="tel:800-556-5925">800-556-5925</a><br>
+          <a class="footer-link" href="mailto:office@fitgenius.com">office@fitgenius.com</a>
+        </p>
+      </address>
+    </div>
+
+    <nav class="nav-col">
+      <p class="footer-heading">Helpful links</p>
+      <ul class="footer-nav">
+        <li><a class="footer-link" href="#">About us</a></li>
+        <li><a class="footer-link" href="#">Terms and conditions</a></li>
+        <li><a class="footer-link" href="#">FAQs</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+<script>
+
+///// Storing the user in local storage and checking if the user is logged in /////
+  let currentUser = localStorage.getItem("currentUser");
+  let selectedPlan;
+
+  function checkUserLoggedIn() {
+      if(currentUser === null){
+          console.log("Noone is logged in");
+          return;
+      }
+      currentUser = JSON.parse(currentUser);
+      let el = document.querySelector(".prikaz-ime");
+      el.innerHTML = currentUser.usr_ime + " " + currentUser.usr_prezime;    
+  }    
+
+  checkUserLoggedIn()
+
+  function logout() {
+    localStorage.removeItem("currentUser");
+    console.log("User logged out!");
+    window.location.href = "login.html";
+  } 
+
+///// DISPLAY USER INFO //////
+
+  axios.get("http://localhost:3600/dashboard/profile/" + currentUser.usr_id).then(response =>{
+    let userData = response.data;
+    let weight = userData.usr_tezina;
+    let height = userData.usr_visina;
+    let level = userData.usr_traininglevel;
+    let date = userData.usr_datumsistem;
+    let currentTrainingPlan = userData.sit_id;
+
+    const dateObj = new Date(date);
+    const year = dateObj.getFullYear();
+    let month = dateObj.getMonth()+1;
+    if(month<10){
+      month="0"+month;      
+    }
+    let day = dateObj.getDate();
+    if(day<10){
+      day="0"+day;      
+    }
+    const formatedDate = year + "-" + month + "-" + day;
+
+    document.getElementById("height").innerHTML = "<span style='font-weight: bold;'>Height:</span> " + height + "cm";
+    document.getElementById("weight").innerHTML = "<span style='font-weight: bold;'>Weight:</span> " + weight +"kg";
+    document.getElementById("date").innerHTML = "<span style='font-weight: bold;'>Start date:</span> " + formatedDate;
+
+    if(level = "1"){
+      document.getElementById("level").innerHTML = "<span style='font-weight: bold;'>Training Level:</span> Beginner";
+    }
+    if(level = "2"){
+      document.getElementById("level").innerHTML = "<span style='font-weight: bold;'>Training level:</span> Intermediate";
+    }
+    if(level = "3"){
+      document.getElementById("level").innerHTML = "<span style='font-weight: bold;'>Training level:</span> Advanced";
+    }
+
+    if (currentTrainingPlan === 1) {
+      planDisplay.innerHTML = 'Push and pull';
+    }
+    if (currentTrainingPlan === 2) {
+      planDisplay.innerHTML = 'Full Body';
+    }
+    if (currentTrainingPlan === 10) {
+      planDisplay.innerHTML = 'Upper and lower';
+    }
+  }).catch(error =>{
+    console.error("Error fetching profile info: ", error);
+  })
+
+///// CHANGE PLAN //////
+
+  const generatePlanButton = document.getElementById("generatePlan");
+  const createPlanButton = document.getElementById("createPlan");
+  const planDisplay = document.getElementById("planDisplay");
+
+  generatePlanButton.addEventListener("click", function () {
+    event.preventDefault();
+
+    planDisplay.innerHTML = `
+    <a href="#" class="sistem-link" data-sistem="pushPull">Push & Pull</a>
+    <a href="#" class="sistem-link" data-sistem="fullBody">Full body</a>
+    <a href="#" class="sistem-link" data-sistem="upperLower">Upper & Lower</a>
+    `;
+
+    const sistemLinks = document.querySelectorAll(".sistem-link");
+
+    sistemLinks.forEach(link => {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        const selectedPlan = link.getAttribute("data-sistem");
+        planDisplay.innerHTML = selectedPlan;
+        
+        updateCurrentTrainingProgram()     
+        window.location.href = `plan.html?system=${selectedPlan}`;         
+      });
+    });
+    console.log("Generate plan clicked");
+  });
+
+///// TRAINING FINISHED //////
+  
+axios.get('http://localhost:3600/dashboard/' + currentUser.usr_id)
+  .then(response => {
+    let daySchedule = response.data;
+    
+    for(let i=0; i<daySchedule.length; i++){
+      let day = document.getElementById("day-" + daySchedule[i].tre_dan);
+      let barbellIcon = day.querySelector(".barbell-icon")
+      let checkIcon = day.querySelector(".check-icon")
+
+      if(daySchedule[i].tre_dan !== undefined && !daySchedule[i].tre_finished){                     
+        barbellIcon.style.display = "block";
+        barbellIcon.style.color = "#526399"
+        checkIcon.style.display = "none";
+        day.addEventListener('click', () => {
+          updateTrainingStatus(daySchedule[i].tre_dan, true);
+        });
+      }
+      else{
+        checkIcon.style.display = "block";
+        checkIcon.style.color = "greenyellow"
+        barbellIcon.style.display = "none";
+        day.addEventListener('click', () => {
+          updateTrainingStatus(daySchedule[i].tre_dan, false);
+        });
+      }
+    }
+    })
+    .catch(error => {
+      console.error('Error fetching exercise data:', error);
+  });
+
+///// UPDATE TRAINING STATUS FINISHED //////
+
+  function updateTrainingStatus(trainingId, isFinished) {
+    axios.put(`http://localhost:3600/dashboard/put/${trainingId}`, { tre_finished: isFinished })
+      .then(response => {
+        console.log('Training status updated successfully:', response.data);
+        window.location.reload();
+      })
+      .catch(error => {
+        console.error('Error updating training status:', error);
+      });
+  }
+
+///// UPDATE SELECTED PLAN BOX FUNCTION //////
+
+  function updateCurrentTrainingProgram() {
+    const selPlan = planDisplay.innerHTML;
+
+    axios.put(`http://localhost:3600/update`, {selPlan, currentUser}).then( response => {
+        console.log(response.data)
+    }).catch((error) => {
+        console.error('Update failed:', error);
+    });
+  }
+      
+</script>
+</html>

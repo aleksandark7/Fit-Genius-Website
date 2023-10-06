@@ -1,0 +1,351 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <link rel="stylesheet" href="admin.css">
+  <title>Admin panel</title>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <a href="index.html">
+      <img class="logo" src="logo.svg" alt="FitGenius logo">
+    </a>
+    <nav class="main-nav">
+      <ul class="main-nav-list">
+        <!-- Navigation links -->
+        <li><a class="main-nav-link" href="exercises.html">Exercises</a></li>
+        <li><a class="main-nav-link" href="systems.html">Training systems</a></li>
+        <li><a class="main-nav-link" href="index.html">Home</a></li>
+        <li><a class="main-nav-link"  href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+    <!-- Admin panel title -->
+    <h1 class="heading-primary">Admin panel</h1>
+
+    <!-- Action buttons -->
+    <a href="#" class="btn btn-full" onclick="getExercises()">Show exercises</a> 
+    <a href="#" class="btn btn-full" onclick="displayAddForm('form-exercise')">Add new exercise</a> 
+    <a href="#" class="btn btn-full" onclick="getSystems()">Show training systems</a> 
+    <a href="#" class="btn btn-full" onclick="displayAddForm('form-system')">Add new system</a>
+    <a href="#" class="btn btn-full" onclick="getUsers()">Show users</a> 
+
+    <!-- Add exercise form -->
+    <div id="form-exercise" style="display: none; margin-left: 2rem;">
+      <label>Exercise name:</label>
+      <input type="text" id="name">
+      <label>Exercise description: </label>
+      <input type="text" id="description">
+      <a href="#" class="btn btn-full" onclick="addExercise()">Add exercise</a>
+    </div> 
+
+    <!-- Add training system form -->   
+    <div id="form-system" style="display: none; margin-left: 2rem;">
+      <label>Training system name:</label>
+      <input type="text" id="name-system">
+      <label>Training system description:</label>
+      <input type="text" id="description-system"> 
+      <a href="#" class="btn btn-full btn-system" onclick="addSystem()">Add training system</a>       
+    </div>
+    
+</body>
+
+<script>
+
+///// DISPLAY ADD FORM FOR EXERCISES/TRAINING SYSTEMS /////
+
+  function displayAddForm(formId){
+    var formaDiv = document.getElementById(formId);
+    formaDiv.style.display = "block";
+  }
+
+///// ADD EXERCISE //////
+
+  function addExercise(){
+    let name = document.getElementById("name").value.trim();
+    let description = document.getElementById("description").value.trim();
+    
+    axios.post("http://localhost:3600/admin/vezbe", {
+      vez_naziv: name,
+      vez_opis: description,
+      }).then((res) => {
+        if (res.data.result === "ERR") {
+            console.error(res.data.Message);
+            return;
+          }
+          console.log("Exercise successfully added!")
+      }).catch((error)=>{
+          console.log(error);
+      });
+  }
+
+///// ADD TRAINING SYSTEM //////
+
+  function addSystem(){
+    let name = document.getElementById("name-system").value.trim();
+    let description = document.getElementById("description-system").value.trim();
+
+    axios.post("http://localhost:3600/admin/sistem",{
+      sit_naziv: name,
+      sit_opis: description,
+    }).then((res) => {
+      if (res.data.result === "ERR") {
+        console.error(res.data.Message);
+        return;
+      }
+      console.log("Training system successfully added!")
+    }).catch((error)=>{
+      console.error(error);
+    })
+  }
+
+///// DELETE EXERCISE //////
+
+  function deleteExercise(exerciseId){
+    axios.delete(`http://localhost:3600/admin/vezbe?vez_id=${exerciseId}`)
+      .then(res => {
+        if (res.data.Result === 'OK') {
+          console.log('Exercise successfully deleted!');
+        } else {
+          console.error('Error while deleting exercise:', res.data.Message);
+        }
+      })
+      .catch(error => {
+        console.error('Error while deleting exercise:', error);
+      });
+  }
+
+///// DELETE TRAINING SYSTEM //////
+
+  function deleteSystem(systemId){
+    axios.delete(`http://localhost:3600/admin/sistem?sit_id=${systemId}`)
+      .then(res => {
+        if (res.data.Result === 'OK'){
+          console.log('Training system successfully deleted!');
+        } else {
+          console.error('Error while deleting training system:', res.data.Message);
+        }
+      })
+      .catch(error => {
+        console.error('Error while deleting training system:', error);
+      });
+  }
+
+///// DELETE USER //////
+
+  function deleteUser(userId) {
+    const isActive = 0;
+    axios.put(`http://localhost:3600/admin/users/${userId}`, { usr_is_active: isActive })
+      .then((res) => {
+        if (res.data.message) {
+          console.log(res.data.message);
+        } else {
+          console.error('Error updating user:', res.data.error);
+        }
+      })
+      .catch((error) => {
+        console.error('Error sending request:', error);
+      });
+  }
+
+///// SHOW EXERCISES //////
+
+  function getExercises() {
+    axios.get('http://localhost:3600/admin/vezbe')
+    .then(res => {
+      let array = res.data.data;
+
+      let table = document.createElement('table');
+      let tableHead = document.createElement('thead');
+      let tableBody = document.createElement('tbody');
+      let tableRow = document.createElement('tr');
+
+      let headerName = document.createElement('th');
+      headerName.textContent = 'Exercise name';
+      let headerDescription = document.createElement('th');
+      headerDescription.textContent = 'Exercise description';
+      let deleteHeader = document.createElement('th');
+      deleteHeader.textContent = 'Delete row';
+
+      tableRow.appendChild(headerName);
+      tableRow.appendChild(headerDescription);
+      tableRow.appendChild(deleteHeader);
+      tableHead.appendChild(tableRow);
+
+      array.forEach(exercise => {
+        let row = document.createElement('tr');
+        let nameCell = document.createElement('td');
+        nameCell.textContent = exercise.vez_naziv;
+        let descriptionCell = document.createElement('td');
+        descriptionCell.textContent = exercise.vez_opis;
+
+        let exerciseId = exercise.vez_id; 
+        let deleteButton = document.createElement('button');
+        deleteButton.id = "deleteBtn";
+        deleteButton.textContent = 'Delete';
+        deleteButton.addEventListener('click', function() {
+          deleteExercise(exerciseId); 
+          row.remove(); 
+        });
+
+        let deleteCell = document.createElement('td');
+        deleteCell.appendChild(deleteButton);
+
+        row.appendChild(nameCell);
+        row.appendChild(descriptionCell);
+        row.appendChild(deleteCell);
+        tableBody.appendChild(row);
+      });
+
+      table.appendChild(tableHead);
+      table.appendChild(tableBody);
+
+      let existingTable = document.querySelector('table');
+      if (existingTable) {
+        existingTable.remove(); 
+      }
+
+      document.body.appendChild(table); 
+    })
+    .catch(error => {
+      console.error('Error while fetching data:', error);
+    });
+  }
+
+///// SHOW TRAINING SYSTEMS //////
+
+  function getSystems() {
+     axios.get('http://localhost:3600/admin/sistem')
+     .then(res => {
+      let array = res.data.data;
+
+      let table = document.createElement('table');
+      let tableHead = document.createElement('thead');
+      let tableBody = document.createElement('tbody');
+      let tableRow = document.createElement('tr');
+
+      let headerName = document.createElement('th');
+      headerName.textContent = 'Training system name';
+      let headerDescription = document.createElement('th');
+      headerDescription.textContent = 'Training system description';
+      let deleteHeader = document.createElement('th');
+      deleteHeader.textContent = 'Delete row';
+
+      tableRow.appendChild(headerName);
+      tableRow.appendChild(headerDescription);
+      tableRow.appendChild(deleteHeader);
+      tableHead.appendChild(tableRow);
+
+      array.forEach(system => {
+        let row = document.createElement('tr');
+        let nameCell = document.createElement('td');
+        nameCell.textContent = system.sit_naziv;
+        let descriptionCell = document.createElement('td');
+        descriptionCell.textContent = system.sit_opis;
+
+        let systemId = system.sit_id; 
+        let deleteButton = document.createElement('button');
+        deleteButton.id = "deleteBtn";
+        deleteButton.textContent = 'Delete';
+        deleteButton.addEventListener('click', function() {
+          deleteSystem(systemId); 
+          row.remove(); 
+        });
+
+        let deleteCell = document.createElement('td');
+        deleteCell.appendChild(deleteButton);
+
+        row.appendChild(nameCell);
+        row.appendChild(descriptionCell);
+        row.appendChild(deleteCell);
+        tableBody.appendChild(row);
+      });
+
+      table.appendChild(tableHead);
+      table.appendChild(tableBody);
+
+      let existingTable = document.querySelector('table');
+      if (existingTable) {
+        existingTable.remove(); 
+      }
+
+      document.body.appendChild(table);    
+    })
+    .catch(error => {
+      console.error('Error while fetching data:', error);
+    });
+  }
+
+///// SHOW USERS //////
+
+  function getUsers() {
+    axios.get('http://localhost:3600/admin/users')
+    .then(res => {
+      let array = res.data.data;
+
+      let table = document.createElement('table');
+      let tableHead = document.createElement('thead');
+      let tableBody = document.createElement('tbody');
+      let tableRow = document.createElement('tr');
+
+      let nameHeader = document.createElement('th');
+      nameHeader.textContent = 'First name';
+      let surnameHeader = document.createElement('th');
+      surnameHeader.textContent = 'Last name';
+      let deleteHeader = document.createElement('th');
+      deleteHeader.textContent = 'Delete row';
+
+      tableRow.appendChild(nameHeader);
+      tableRow.appendChild(surnameHeader);
+      tableRow.appendChild(deleteHeader);
+      tableHead.appendChild(tableRow);
+
+      array.forEach(user => {  
+        let row = document.createElement('tr');
+        let nameCell = document.createElement('td');
+        nameCell.textContent = user.usr_ime;
+        let surnameCell = document.createElement('td');
+        surnameCell.textContent = user.usr_prezime;
+
+        let userId = user.usr_id;
+        let deleteButton = document.createElement('button');
+        deleteButton.id = "deleteBtn"
+        deleteButton.textContent = 'Delete';
+        deleteButton.addEventListener('click', function() {
+          deleteUser(userId); 
+          row.remove(); 
+        });
+
+        let deleteCell = document.createElement('td');
+        deleteCell.appendChild(deleteButton);
+
+        row.appendChild(nameCell);
+        row.appendChild(surnameCell);
+        row.appendChild(deleteCell);
+        tableBody.appendChild(row);
+      });
+
+      table.appendChild(tableHead);
+      table.appendChild(tableBody);
+
+      let existingTable = document.querySelector('table');
+      if (existingTable) {
+        existingTable.remove(); 
+      }
+      
+      document.body.appendChild(table); 
+    })
+    .catch(error => {
+      console.error('Error while fetching data: ', error);
+    });
+  }
+
+  </script>
+</html> 

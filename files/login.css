@@ -1,0 +1,278 @@
+html{
+  font-size: 62.5%;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: "Inter", sans-serif;
+  line-height: 1;
+  font-size: 1.5rem;
+  color: #2e2e2e;
+  background-color: #000;
+}
+
+.container {
+  width: 30rem;
+  padding: 3rem;
+  background-color: #f2f2f2;
+  margin: 0 auto;
+  margin-top: 10rem;
+  border: 1px solid #ccc;
+  border-radius: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.heading {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #2e2e2e;
+  margin: 15px 0 30px 0;
+}
+
+.login-msg{
+  display: inline-block;
+  color: red;
+  margin-top: 2rem;
+}
+
+.input-email,
+.input-password {
+  width: 100%;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid rgb(173, 173, 173);
+  border-radius: 30px;
+  margin: 10px 0;
+  color: black;
+  font-size: 1.5rem;
+  font-weight: 500;
+  box-sizing: border-box;
+  padding-left: 30px;
+}
+
+.btn:link,
+.btn:visited{
+    display: inline-block;    
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1.6rem 3.2rem;
+    border-radius: 11px;
+    transition: all 0.3s;
+  }
+
+.btn-submit:link,
+.btn-submit:visited {
+  display: inline-block;
+  text-decoration: none;
+  padding: 1.6rem 11.6rem;
+  color: #fff;
+  font-weight: 400;
+  font-size: 1.8rem;
+  transition: all 0.5s;
+  background-color: #ff0000;
+  border-radius: 3rem;
+  margin-top: 2rem;
+  letter-spacing: 1px;
+}
+
+.btn-submit:hover,
+.btn-submit:active{
+  background-color: #990000;
+  color: #fff;
+}
+
+  .login-text{
+    display: inline-block;
+    font-size: 1.7rem;
+    margin-top: 3rem;
+    margin-bottom: 1.4rem;
+  }
+
+.btn-sign-up:link,
+.btn-sign-up:visited {
+  display: inline-block;
+  text-decoration: none;
+  padding: 1.2rem 2.4rem;
+  color: #fff;
+  font-weight: 400;
+  font-size: 1.4rem;
+  transition: all 0.3s;
+  background-color: #2b2b2b;
+  border-radius: 3rem;
+  }
+
+.btn-sign-up:hover,
+.btn-sign-up:active{
+  background-color: #3d3d3d;
+}
+
+/* ------------------------- */
+/* Imported from style.css */
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000000;
+  height: 9.6rem;
+  padding: 0 3.2rem;
+  border-bottom: 1px solid #fff;
+}
+
+.logo{
+  padding-top: 1rem;
+  height: 24rem;
+}
+
+.main-nav-list{
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 3.2rem;
+}
+
+.main-nav-link:link,
+.main-nav-link:visited{
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.8rem;
+  transition: all 0.3s;
+}
+
+.main-nav-link:hover,
+.main-nav-link:active{
+  color: #ff3333;
+}
+
+.main-nav-link.nav-cta:link,
+.main-nav-link.nav-cta:visited{
+  padding: 1.2rem 2.4rem;
+  border-radius: 11px;
+  color: #fff;
+  background-color: #ff0000  ;
+}
+
+.main-nav-link.nav-cta:hover,
+.main-nav-link.nav-cta:active{
+  background-color: #990000;
+}
+
+.footer{
+  padding: 5rem 0 6.4rem; 
+  color: #494949;
+  border-top: 2px solid #ff0000;
+  margin-top: 15rem;
+  background-color: #f2f2f2;
+  position: relative;
+}
+
+.grid-footer{
+  grid-template-columns: 1.5fr 1.5fr 1fr 1fr;
+}
+
+.grid{
+  display: grid;
+  gap: 9.6rem;  
+}
+
+.container-footer{
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 3.2rem;
+}
+
+.logo-col{
+  display: flex;
+  flex-direction: column;
+}
+
+.social-links{
+  margin-top: 8rem;
+  list-style-type: none;
+  display: flex;
+  gap: 2.4rem;
+}
+
+.social-icon{
+  height: 2.4rem;
+  width: 2.4rem;
+  color: #990000;
+}
+
+.social-icon:link,
+.social-icon:visited{
+  transition: all 0.3s;
+}
+
+.social-icon:hover,
+.social-icon:active{
+  color: #ff0000;
+} 
+
+.copyright{
+  font-size: 1.3rem;
+  line-height: 1.6rem;
+  margin-top: auto;
+}
+
+.footer-logo{
+  display: block;
+  margin-bottom: 3.2rem;
+  position: absolute;
+  width: 20rem;
+  top: -22px;
+  left: 102px;
+}
+
+.footer-heading{
+  color: #444;
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 3.5rem;
+}
+
+.contacts{
+  font-style: normal;
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+.address-col{
+  display: flex;
+  flex-direction: column;
+}
+
+.address{
+  margin-bottom: 2.4rem;
+}
+
+.footer-nav{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.footer-link:link,
+.footer-link:visited{
+ text-decoration: none;
+ font-size: 1.6rem;
+ color: #565656;
+ transition: all 0.3s;
+}
+
+.footer-link:hover,
+.footer-link:active{
+  color: #222;
+}

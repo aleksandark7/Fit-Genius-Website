@@ -1,0 +1,143 @@
+html{
+  font-size: 62.5%;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: "Inter", sans-serif;
+  line-height: 1;
+  font-size: 1.8rem;
+  color: #000000;
+  background: linear-gradient(to  right, #526399, #704343);
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to  right, #526399, #704343);
+  height: 9.6rem;
+  padding: 0 3.2rem;
+  border-bottom: 1px solid #fff;
+}
+
+
+.logo{
+  padding-top: 1rem;
+  height: 24rem;
+}
+
+.main-nav-list{
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 3.2rem;
+}
+
+.main-nav-link:link,
+.main-nav-link:visited{
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.8rem;
+  transition: all 0.3s;
+}
+
+.main-nav-link:hover,
+.main-nav-link:active{
+  color: #ff3333;
+}
+
+.main-nav-link.nav-cta:link,
+.main-nav-link.nav-cta:visited{
+  padding: 1.2rem 2.4rem;
+  border-radius: 11px;
+  color: #fff;
+  background-color: #ff0000  ;
+}
+
+.main-nav-link.nav-cta:hover,
+.main-nav-link.nav-cta:active{
+  background-color: #990000;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.heading{
+  font-size: 3.6rem;
+  text-align: center;
+  line-height: 1.05;
+  font-weight: 700;
+  color:#fff;
+  margin-bottom: 3.2rem;
+  letter-spacing: -0.5px;
+}
+
+.training{
+  font-weight: 600;
+}
+  
+.training:hover,
+.training:active{
+  color:#526399
+}
+
+.training-plan table {
+  width: 100%;
+  margin-top: 1rem; 
+  background-color: #ffffff; 
+  border: 1px solid black; 
+  border-collapse: collapse;
+}
+
+.training-plan th,
+.training-plan td {
+  padding: 0.5rem;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.training-plan th {
+  background-color: #ab6363; 
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: 500;
+  
+}
+
+.training-plan td{
+  font-size: 1.8rem;
+}
+
+td.training {
+  cursor: pointer;
+}
+
+h1, h2 {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

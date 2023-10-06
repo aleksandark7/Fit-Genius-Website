@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <link rel="stylesheet" href="login.css">
+  <title>Login page</title>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="index.html">
+      <img class="logo" src="logo.svg" alt="FitGenius logo">
+    </a>
+    <nav class="main-nav">
+      <ul class="main-nav-list">
+        <!-- Navigation links -->
+        <li><a class="main-nav-link" href="exercises.html">Exercises</a></li>
+        <li><a class="main-nav-link" href="systems.html">Training systems</a></li>
+        <li><a class="main-nav-link" href="index.html">Home</a></li>
+        <li><a class="main-nav-link nav-cta" target="_blank" href="register.html">Register now</a></li>
+      </ul>
+  </nav>
+</header>
+
+  <!-- Login form -->
+  <div class="container">
+    <h1 class="heading">Login</h1>
+    <input id="email" class="input-email" type="text" placeholder="Email" name="email" required >
+    <input id="password" class="input-password" type="password" placeholder="Password" name="password" required >
+    <a href="#" class="btn btn-submit" type="submit" onclick="doLogin()">Submit</a>
+    <p class="login-text">Don't have any account?</p>
+    <a href="./register.html" class="btn btn-sign-up"type="button">Sign up</a>
+    <div id="login-msg"></div>
+  </div>
+
+  <footer class="footer">
+    <div class="container-footer grid grid-footer">
+      <div class="logo-col">
+        <a href="index.html">
+          <img class="footer-logo" src="footerLogo.svg" alt="Fit Genius logo">
+        </a>
+        <ul class="social-links">
+          <li><a class="footer-link" href="#" class="social-logo"><ion-icon class="social-icon" name="logo-instagram"></ion-icon></a></li>
+          <li><a class="footer-link" href="#" class="social-logo"><ion-icon class="social-icon" name="logo-facebook"></ion-icon></a></li>
+          <li><a class="footer-link" href="#" class="social-logo"><ion-icon class="social-icon" name="logo-twitter"></ion-icon></a></li>
+        </ul>
+        <p class="copyright">Copyright &copy; 2023 by Fit Genius</p>
+      </div>
+      <div class="address-col">
+        <p class="footer-heading">Contact us</p>
+        <address class="contacts">
+          <p class="address">123 Main Street, 3rd floor, Boston, MA 94125</p>
+          <p>
+            <a class="footer-link" href="tel:800-556-5925">800-556-5925</a>
+            <a class="footer-link" href="mailto:office@fitgenius.com">office@fitgenius.com</a>
+          </p>
+        </address>
+      </div>
+      <nav class="nav-col">
+        <p class="footer-heading">Account</p>
+        <ul class="footer-nav">
+          <li><a class="footer-link" href="#">Profile</a></li>
+          <li><a class="footer-link" href="register.html" target="_blank">Register now</a></li>
+        </ul>
+      </nav>
+      <nav class="nav-col">
+        <p class="footer-heading">Helpful links</p>
+        <ul class="footer-nav">
+          <li><a class="footer-link" href="#">About us</a></li>
+          <li><a class="footer-link" href="#">Terms and conditions</a></li>
+          <li><a class="footer-link" href="#">FAQs</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+</body>
+
+  <script>
+  
+  ///// Login function /////
+  function doLogin(){
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value;
+    let level;
+
+    axios.post("http://localhost:3600/login", {
+      usr_email: email,
+      usr_password: password,
+      usr_wsLevel: level
+    }).then((res) => {
+      if(res.data.Result === "ERR"){
+        document.getElementById("login-msg").innerHTML = res.data.Message;
+        return;
+      }
+
+      localStorage.setItem("currentUser", JSON.stringify(res.data.data))
+          
+      if(res.data.data.usr_wsLevel === 1){
+          window.location.href = "dashboard.html";
+      }
+      else{
+          window.location.href = "admin.html";
+        }
+    });
+  }
+
+  ///// Enter keypress function /////
+  let input = document.getElementById("password");
+  if(input){
+    input.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          doLogin();
+        }
+    });
+  }
+
+  </script>
+</html>
+
+
